@@ -4,7 +4,7 @@
 // @supportURL   https://discord.gg/bypass-link-rut-gonmeo-bypassmeobypass-com-1385559183163789445
 // @version      1793366480
 // @author       ...
-// @icon         https://cdn.jsdelivr.net/gh/n1ulls/ztwsxn@2ac1a187c8dcaaae4c6c76bf7f59c9ed05534021/assets/icons.png
+// @icon         https://github.com/n1ulls.png?size=64
 // @match        https://link4m.com/go/*
 // @match        https://link4m.net/go/*
 // @match        https://link4m.org/go/*
