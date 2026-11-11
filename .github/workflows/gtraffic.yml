@@ -1,0 +1,72 @@
+name: gtraffic-bypass
+
+on:
+  push:
+    branches: [main]
+    paths: ["gtraffic/bypass.js"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gtraffic-bypass
+  cancel-in-progress: false
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    env:
+      CORE: gtraffic/bypass.js
+      LOADER: gtraffic/loader.user.js
+    steps:
+      - uses: actions/create-github-app-token@v2
+        id: app-token
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Bot
+        id: bot
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          SLUG: ${{ steps.app-token.outputs.app-slug }}
+        run: echo "id=$(gh api "/users/${SLUG}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Update version
+        run: |
+          H=$(git rev-parse HEAD)
+          V=$(date +%s)
+          sed -i -E "s|(@require[[:space:]]+https://cdn\.jsdelivr\.net/gh/[^@]+@)[0-9a-f]{7,40}(/gtraffic/bypass\.js)|\1$H\2|" "$LOADER"
+          sed -i -E "s|(@version[[:space:]]+).*|\1$V|" "$LOADER"
+          git diff --stat
+
+      - name: Commit
+        env:
+          SLUG: ${{ steps.app-token.outputs.app-slug }}
+          BOT_ID: ${{ steps.bot.outputs.id }}
+        run: |
+          git config user.name "${SLUG}[bot]"
+          git config user.email "${BOT_ID}+${SLUG}[bot]@users.noreply.github.com"
+          git add "$LOADER"
+
+          SHA=$(git rev-parse --short HEAD)
+          TS=$(date +%s)
+
+          git commit --no-verify --cleanup=verbatim -F - <<EOF || exit 0
+          🔄 chore(gtraffic): sync loader to bypass.js@${SHA}
+
+          - @require → ${SHA}
+          - @version → ${TS}
+          EOF
+
+          git push
+
+      - name: Purge jsDelivr
+        run: |
+          curl -fsS "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/${CORE}"
+          curl -fsS "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/${LOADER}"
