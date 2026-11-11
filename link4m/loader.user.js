@@ -1,5 +1,6 @@
 // ==UserScript==
 // @name         Link4m Bypass
+// @namespace    https://github.com/ztwsxn
 // @description  ...
 // @supportURL   https://discord.gg/bypass-link-rut-gonmeo-bypassmeobypass-com-1385559183163789445
 // @version      1793786935
