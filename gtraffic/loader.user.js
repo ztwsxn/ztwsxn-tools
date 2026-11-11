@@ -2,7 +2,7 @@
 // @name         gTraffic Bypass
 // @description  ...
 // @supportURL   https://discord.gg/bypass-link-rut-gonmeo-bypassmeobypass-com-1385559183163789445
-// @version      1793786935
+// @version      1794399181
 // @author       ...
 // @icon         https://github.com/ztwsxn.png?size=64
 // @match        https://gtraffic.io/*
@@ -12,7 +12,7 @@
 // @grant        unsafeWindow
 // @downloadURL  https://cdn.jsdelivr.net/gh/ztwsxn/ztwsxn@main/gtraffic/loader.user.js
 // @updateURL    https://cdn.jsdelivr.net/gh/ztwsxn/ztwsxn@main/gtraffic/loader.user.js
-// @require      https://cdn.jsdelivr.net/gh/ztwsxn/ztwsxn@a2aa59330b1156ce0bfd557caa29eba6009ded0b/gtraffic/bypass.js
+// @require      https://cdn.jsdelivr.net/gh/ztwsxn/ztwsxn@fbb7365cde1ccdf3d117b1bfdd3d0ade93c771fe/gtraffic/bypass.js
 // @connect      client.gtraffic.io
 // @connect      dr-client.gtraffic.io
 // @connect      *
