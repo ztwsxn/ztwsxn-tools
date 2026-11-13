@@ -1,24 +1,24 @@
-name: gtraffic-bypass
+name: gtraffic_ontops_toplinks-bypass
 
 on:
   push:
     branches: [main]
-    paths: ["gtraffic/bypass.js"]
+    paths: ["gtraffic_ontops_toplinks/bypass.js"]
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: gtraffic-bypass
+  group: gtraffic_ontops_toplinks-bypass
   cancel-in-progress: false
 
 jobs:
   bump:
     runs-on: ubuntu-latest
     env:
-      CORE: gtraffic/bypass.js
-      LOADER: gtraffic/loader.user.js
+      CORE: gtraffic_ontops_toplinks/bypass.js
+      LOADER: gtraffic_ontops_toplinks/loader.user.js
     steps:
       - uses: actions/create-github-app-token@v2
         id: app-token
@@ -41,7 +41,7 @@ jobs:
         run: |
           H=$(git rev-parse HEAD)
           V=$(date +%s)
-          sed -i -E "s|(@require[[:space:]]+https://cdn\.jsdelivr\.net/gh/[^@]+@)[0-9a-f]{7,40}(/gtraffic/bypass\.js)|\1$H\2|" "$LOADER"
+          sed -i -E "s|(@require[[:space:]]+https://cdn\.jsdelivr\.net/gh/[^@]+@)[0-9a-f]{7,40}(/gtraffic_ontops_toplinks/bypass\.js)|\1$H\2|" "$LOADER"
           sed -i -E "s|(@version[[:space:]]+).*|\1$V|" "$LOADER"
           git diff --stat
 
@@ -58,7 +58,7 @@ jobs:
           TS=$(date +%s)
 
           git commit --no-verify --cleanup=verbatim -F - <<EOF || exit 0
-          🔄 chore(gtraffic): sync loader to bypass.js@${SHA}
+          🔄 chore(gtraffic_ontops_toplinks): sync loader to bypass.js@${SHA}
 
           - @require → ${SHA}
           - @version → ${TS}
