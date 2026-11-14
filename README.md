@@ -1,7 +1,4 @@
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,18,24&height=120&section=header&text=ztwsxn-tools&fontSize=42&fontColor=ffffff&fontAlignY=45" alt="ztwsxn-tools" />
-**Userscript hỗ trợ bypass link rút gọn**
-
 ![Userscript](https://img.shields.io/badge/Userscript-Tampermonkey%20%7C%20Violentmonkey-00485B?style=flat-square&logo=tampermonkey&logoColor=white)
 ![Scripts](https://img.shields.io/badge/Scripts-2-blueviolet?style=flat-square)
 ![AI](https://img.shields.io/badge/Generated%20by-AI-ff69b4?style=flat-square)
