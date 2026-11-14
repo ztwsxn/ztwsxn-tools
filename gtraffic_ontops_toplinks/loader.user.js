@@ -13,14 +13,13 @@
 // @require      https://cdn.jsdelivr.net/gh/ztwsxn/ztwsxn@3f8f3028c8c915a22f585c04df062ad785b55a24/gtraffic_ontops_toplinks/bypass.js
 // @downloadURL  https://cdn.jsdelivr.net/gh/ztwsxn/ztwsxn@main/gtraffic_ontops_toplinks/loader.user.js
 // @updateURL    https://cdn.jsdelivr.net/gh/ztwsxn/ztwsxn@main/gtraffic_ontops_toplinks/loader.user.js
-// @grant        GM_xmlhttpRequest
-// @grant        GM_setClipboard
 // @grant        unsafeWindow
+// @grant        GM_setClipboard
+// @grant        GM_xmlhttpRequest
 // @connect      client.gtraffic.io
 // @connect      dr-client.gtraffic.io
 // @connect      pub.toplinks.io
 // @connect      api-client.ontops.link
-// @connect      *
 // @run-at       document-idle
 // @noframes
 // ==/UserScript==
